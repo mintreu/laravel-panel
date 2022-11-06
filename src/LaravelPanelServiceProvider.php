@@ -18,6 +18,7 @@ class LaravelPanelServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-panel')
             ->hasConfigFile()
+            ->hasRoute('web')
             ->hasViews()
             ->hasMigration('create_laravel-panel_table')
             ->hasCommand(LaravelPanelCommand::class);
