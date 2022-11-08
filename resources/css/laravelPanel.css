@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*@layer components {*/
+
+/*    .darklight {*/
+/*        @apply dark:bg-gray-800  bg-gray-200 dark:text-white text-gray-800   dark:ring-gray-800/50 ring-gray-300/50*/
+/*    }*/
+
+/*}*/

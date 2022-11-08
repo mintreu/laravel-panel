@@ -6,7 +6,8 @@ use Mintreu\LaravelPanel\Panels\Panel;
 
 class Dashboard extends Panel
 {
-
+    protected string $view = 'panel::livewire.dashboard';
+    protected string $title = 'Dashboard';
     /**
      * @return array
      */
@@ -30,4 +31,30 @@ class Dashboard extends Panel
     {
         return [];
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

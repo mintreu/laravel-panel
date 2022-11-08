@@ -4,6 +4,7 @@ namespace Mintreu\LaravelPanel\Panels;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Mintreu\LaravelLayout\View\AppLayout;
+use Mintreu\LaravelPanel\View\PanelTheme;
 
 
 abstract class Panel extends Component
