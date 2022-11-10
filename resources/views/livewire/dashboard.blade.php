@@ -2,7 +2,7 @@
     style="overflow:hidden"
 </x-slot>
 
-{{ dump($title) }}
+{{--{{ dump($title) }}--}}
 
 <div class="h-screen w-full  darklight ">
     <div class="h-full"  x-data="{ leftMSidebar:false,darkMode:false,leftSidebar:true,mainContent:true }" x-bind:class="{'dark': darkMode }" >

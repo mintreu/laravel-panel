@@ -19,13 +19,13 @@
             <nav class="mt-5 flex-1 px-2  space-y-1" aria-label="Sidebar">
                 @if(isset($sidebarlinks) && $sidebarlinks)
                     @foreach($sidebarlinks as $key => $links)
-{{--                        <a href="@if(\Illuminate\Support\Facades\Route::has($links['route'])) {{route($links['route'])}} @else # @endif" data-bs-toggle="tooltip" data-bs-placement="right" title="Visit {{\Illuminate\Support\Str::ucfirst($links['name'])}}"--}}
-{{--                           class=" group flex items-center px-2 py-2 text-sm font-medium rounded-md "--}}
-{{--                           x-state:on="Current" x-state:off="Default"--}}
-{{--                           x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">--}}
-{{--                            {!! $links['icon'] !!}--}}
-{{--                            <span class="flex-1">{{$links['name']}}</span>--}}
-{{--                        </a>--}}
+                        <a href="@if(\Illuminate\Support\Facades\Route::has($links['route'])) {{route($links['route'])}} @else # @endif" data-bs-toggle="tooltip" data-bs-placement="right" title="Visit {{\Illuminate\Support\Str::ucfirst($links['name'])}}"
+                           class=" group flex items-center px-2 py-2 text-sm font-medium rounded-md "
+                           x-state:on="Current" x-state:off="Default"
+                           x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">
+                            {!! $links['icon'] !!}
+                            <span class="flex-1">{{$links['name']}}</span>
+                        </a>
 
 
 
@@ -33,14 +33,14 @@
 {{--                        <button  wire:click="refreshSpace({{ $key }})">sdsd</button>--}}
 
 
-                        <button  wire:click="refreshSpace('{{ $links['name'] }}')"
-                            data-bs-toggle="tooltip" data-bs-placement="right" title="Visit {{\Illuminate\Support\Str::ucfirst($links['name'])}}"
-                           class=" group flex items-center px-2 py-2 text-sm font-medium rounded-md "
-                           x-state:on="Current" x-state:off="Default"
-                           x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">
-                            {!! $links['icon'] !!}
-                            <span class="flex-1">{{$links['name']}}</span>
-                        </button>
+{{--                        <button  wire:click="refreshSpace('{{ $links['name'] }}')"--}}
+{{--                            data-bs-toggle="tooltip" data-bs-placement="right" title="Visit {{\Illuminate\Support\Str::ucfirst($links['name'])}}"--}}
+{{--                           class=" group flex items-center px-2 py-2 text-sm font-medium rounded-md "--}}
+{{--                           x-state:on="Current" x-state:off="Default"--}}
+{{--                           x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">--}}
+{{--                            {!! $links['icon'] !!}--}}
+{{--                            <span class="flex-1">{{$links['name']}}</span>--}}
+{{--                        </button>--}}
 
 
 
