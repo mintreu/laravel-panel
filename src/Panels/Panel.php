@@ -22,11 +22,44 @@ abstract class Panel extends Component
 
 
 
+    protected object|null $currentObject=null;
 
-    abstract protected function form():array;
-    abstract protected function table():array;
-    abstract protected function relation():array;
+    abstract public function form():array;
+    abstract public function table():array;
+    abstract public function relation():array;
 
+
+    public function getSetInstance($instance=null)
+    {
+        $this->currentObject = $instance ?? $this;
+    }
+
+
+
+
+
+
+    protected function getPanelConfig()
+    {
+
+        return [
+            'title' => $this->currentObject->title,
+            'form' => $this->currentObject->form(),
+            'table' => $this->currentObject->table(),
+            'relation' => $this->currentObject->relation(),
+        ];
+    }
+
+    protected function getLayoutConfig()
+    {
+       return [
+           'title' => __($this->currentObject->title),
+           'description' => __($this->currentObject->description),
+           'keyword' => $this->currentObject->keyword,
+           'favicon' => $this->currentObject->favicon,
+
+       ];
+    }
 
 
 
@@ -35,19 +68,8 @@ abstract class Panel extends Component
      */
     public function render():View
     {
-
-
-        return view($this->view,[
-            'form' => $this->form(),
-            'table' => $this->table(),
-            'relation' => $this->relation(),
-        ])->layout($this->theme,[
-            'title' => __($this->title),
-            'description' => __($this->description),
-            'keyword' => $this->keyword,
-            'favicon' => $this->favicon,
-
-        ]);
+        $this->getSetInstance();
+        return view($this->view,$this->getPanelConfig())->layout($this->theme,$this->getLayoutConfig());
     }
 
 

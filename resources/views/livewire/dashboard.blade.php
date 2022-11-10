@@ -1,72 +1,71 @@
-<div class="h-screen w-screen ">
-    <div class="h-full"  x-data="{ leftMSidebar:false,darkMode:false,leftSidebar:true }" x-bind:class="{'dark': darkMode }" >
+<x-slot name="bodyAttribute">
+    style="overflow:hidden"
+</x-slot>
 
-        @livewire('panel::navigation')
+{{ dump($title) }}
 
-
-
+<div class="h-screen w-full  darklight ">
+    <div class="h-full"  x-data="{ leftMSidebar:false,darkMode:false,leftSidebar:true,mainContent:true }" x-bind:class="{'dark': darkMode }" >
+        @livewire('panel::navigation', key(122))
         <div class="flex  w-full h-screen bg-transparent">
-            @livewire('panel::sidebar')
-
-
-            <main class="h-full w-full rounded-lg mt-1  bg-transparent overflow-y-auto">
-                <div class="grid grid-cols-12 gap-2 ">
-
+            @livewire('panel::sidebar', key(123))
+            <main class="h-full w-full   overflow-y-auto darklight" x-cloak>
+                <div class="grid grid-cols-12 gap-2">
                     <div class="col-span-12 ">
-                        {{-- Breadcumb--}}
-                        <nav class="bg-white border-b border-gray-200 flex" aria-label="Breadcrumb">
-                            <ol role="list" class="max-w-screen-xl w-full mx-auto px-4 flex space-x-4 sm:px-6 lg:px-8">
-                                <li class="flex">
-                                    <div class="flex items-center">
-                                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                                            <svg class="flex-shrink-0 h-5 w-5" x-description="Heroicon name: solid/home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                                            </svg>
-                                            <span class="sr-only">Home</span>
-                                        </a>
-                                    </div>
-                                </li>
-
-                                <li class="flex">
-                                    <div class="flex items-center">
-                                        <svg class="flex-shrink-0 w-6 h-full text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path>
-                                        </svg>
-                                        <a href="#" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Projects</a>
-                                    </div>
-                                </li>
-
-                                <li class="flex">
-                                    <div class="flex items-center">
-                                        <svg class="flex-shrink-0 w-6 h-full text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z"></path>
-                                        </svg>
-                                        <a href="#" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" aria-current="page">Project Nero</a>
-                                    </div>
-                                </li>
-
-                            </ol>
-                        </nav>
-
+                        {{--  Main Content Area Start --}}
 
                         {{-- Breadcumb--}}
+                        @include('panel::static.breadcumb')
+                        {{-- Breadcumb--}}
+
+                        {{-- Main Content Start --}}
+                        <div class="col-span-12 m-2 overflow-x-hidden h-full bg-gray-100 rounded-lg shadow-2xl z-40"
+                             x-show="mainContent"
+                             x-data="{ listView:true,createView:false }">
+                            {{-- Page Head--}}
+                            <div class="grid grid-cols-12 p-1">
+                                {{--  Page Header Section--}}
+                                @include('panel::static.panel-page-header')
+                                {{--  Page Header Section--}}
+                            </div>
+
+                            {{--Create Form --}}
+                            @livewire('panel::create-record',['components' => $form], key(124))
+
+                            {{--  List View--}}
+                            @livewire('panel::list-record', key(125))
+                            {{--  List View--}}
+
+
+
+
+
+                            {{--                    {{ $slot }}--}}
+                        </div>
+                        {{-- Main Content End --}}
+
+                        {{-- Main Content LockScreen Start --}}
+                        <div class="col-span-12 m-3 p-3 overflow-x-hidden h-full rounded-lg shadow-2xl z-40 text-center" x-show="!mainContent">
+                            <h1 class="text-4xl italic text-center content-between"> Space Locked</h1>
+                            <button @click="mainContent = !mainContent" class=" mt-3 bg-red-400 w-48 text-white p-4 rounded-lg text-center"> Unlock Space</button>
+                            {{--                    {{ $slot }}--}}
+                        </div>
+                        {{-- Main Content LockScreen End --}}
+
+                        {{-- Footer --}}
+                        <div class="col-span-12  min-h-32 border-t border-gray-200 rounded-lg p-3 text-right">
+                            {{config('app.name')}} - {{\Illuminate\Support\Carbon::now()->year}} All Rights Reserved |
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Visit Mintreu">Powered By Mintreu Services</a>
+                        </div>
+                        {{-- Footer --}}
+
+
+
+                        {{--  Main Content Area End --}}
                     </div>
-
-
-
-
-
-                    Main Content Area
-                    {{--                    {{ $slot }}--}}
                 </div>
             </main>
-
-
         </div>
-
-
-
-
     </div>
 </div>
 

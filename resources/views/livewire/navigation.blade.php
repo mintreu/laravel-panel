@@ -3,14 +3,7 @@
 
 
 
-    <nav  x-data="{ topMNavbar: false }" class="  rounded-b shadow-lg
-                                            dark:bg-gray-800
-                                                 bg-gray-200
-                                            dark:text-white
-                                                 text-gray-900
-{{--                                                 hover:bg-gray-700--}}
-{{--                                                 hover:text-white--}}
-                                                  ">
+    <nav  x-data="{ topMNavbar: false }" class="  rounded-b shadow-lg darklight " x-cloak >
 
         {{-- Desktop Navbar--}}
         <div class="max-w-full  px-2 sm:px-4 lg:px-8">
@@ -23,7 +16,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                         </svg>
                     </button>
-                    <div class="flex-shrink-0 text-white">
+                    <div class="flex-shrink-0 ">
                         <a href="/" class="flex">
                             @if(isset($brandingLogo) && $brandingLogo)
                                 {{-- Branding Logo--}}
@@ -34,7 +27,7 @@
                             @if(isset($brandingText) && $brandingText)
                                 {{-- Branding Text --}}
                                     <div class="grow">
-                                    <h2>{{strtoupper(config('app.name'))}}</h2>
+                                    <h2 class="text-xl  font-bold italic" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Visit {{\Illuminate\Support\Str::ucfirst(config('app.name'))}}">{{config('app.name')}}</h2>
                                 </div>
                             @endif
                         </a>
@@ -45,8 +38,8 @@
                             @if(isset($navlinks) && !empty($navlinks))
                                 {{-- Top Navbar --}}
                                 @foreach($navlinks as $link)
-                                    <a href="#"
-                                       class=" px-3 py-2 rounded-md text-sm font-medium ">{{$link['name']}}</a>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Visit {{\Illuminate\Support\Str::ucfirst($link['name'])}}"
+                                       class=" px-3 py-2 rounded-md text-sm font-medium font-bold">{{\Illuminate\Support\Str::ucfirst($link['name'])}}</a>
                                 @endforeach
                             @endif
                         </div>
@@ -57,7 +50,7 @@
                 @if(isset($globalSearch) && $globalSearch)
                     <div class="flex-1 flex justify-center px-2 lg:ml-6 lg:justify-end float-right ">
                         <div class="max-w-lg w-full lg:max-w-xs">
-                            <label for="search" class="sr-only">Search</label>
+                            <label for="search" class="sr-only" >Search</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 " x-description="Heroicon name: solid/search"
@@ -68,7 +61,7 @@
                                               clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <input id="search" name="search"
+                                <input id="search" name="search" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Enter Search Text"
                                        class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5  placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
                                        placeholder="Search" type="search">
                             </div>
@@ -105,10 +98,17 @@
 
                 {{-- DarkMode Toggle Button--}}
                 <div class="ml-2 inline-flex items-center justify-center p-2">
-                    <button @click="darkMode = !darkMode">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <button @click="darkMode = !darkMode" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eye Saver">
+                        <svg x-cloak x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                         </svg>
+
+                        <svg x-cloak x-show="darkMode" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+
+
+
                     </button>
                 </div>
 
@@ -130,7 +130,7 @@
                                 {{--                         @click.outside="profileBtn= false"--}}
                             >
                                 <div>
-                                    <button type="button"
+                                    <button type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="My Profile"
                                             class="bg-gray-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                                             id="user-menu-button" x-ref="button" @click="profileBtn = ! profileBtn" aria-expanded="false"
                                             aria-haspopup="true" x-bind:aria-expanded="open.toString()">
@@ -205,7 +205,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="pt-4 pb-3 border-t ">
+            <div class="pt-4 pb-3 border-t border-b-2 rounded-lg border-gray-300 mb-1">
                 <div class="flex items-center px-5">
                     <div class="flex-shrink-0">
                         <img class="h-10 w-10 rounded-full"
