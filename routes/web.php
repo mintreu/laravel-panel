@@ -20,16 +20,18 @@ foreach (config('panel.panels') as $panel)
 {
 
     Route::prefix($panel['slug'])->group(function (){
-        Route::get('/dashboard', \Mintreu\LaravelPanel\Http\Livewire\Dashboard::class);
-        Route::get('/dashboard/profile', \Mintreu\LaravelPanel\Http\Livewire\Pages\Profile::class);
-        Route::get('/dashboard/users', \Mintreu\LaravelPanel\Http\Livewire\Pages\Users::class)->name('panel.users');
+        Route::get('/dashboard', \Mintreu\LaravelPanel\Panel\Panel::class);
+        Route::get('/login', \Mintreu\LaravelPanel\Panel\Panel::class);
+
+//        Route::get('/dashboard/profile', \Mintreu\LaravelPanel\Http\Livewire\Pages\Profile::class);
+//        Route::get('/dashboard/users', \Mintreu\LaravelPanel\Http\Livewire\Pages\Users::class)->name('panel.users');
     });
 }
 
 
 
-
-Route::get('/dashboard/setting', \Mintreu\LaravelPanel\Http\Livewire\Pages\Setting::class);
+//
+//Route::get('/dashboard/setting', \Mintreu\LaravelPanel\Http\Livewire\Pages\Setting::class);
 
 
 //Route::get('/login',\Mintreu\LaravelPanel\Http\Livewire\Login::class);
