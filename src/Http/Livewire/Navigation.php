@@ -1,11 +1,12 @@
 <?php
 
-namespace Mintreu\LaravelPanel\Panel\Navigation;
+namespace Mintreu\LaravelPanel\Http\Livewire;
 
 use Livewire\Component;
 
-class TopBar extends Component
+class Navigation extends Component
 {
+
 
     public bool $brandingLogo = true;
     public bool $brandingText = true;
@@ -32,9 +33,8 @@ class TopBar extends Component
 
     public function render()
     {
-        return view('panel::navigation.topbar');
+        return view('panel::livewire.navigation');
     }
-
 
 
 }

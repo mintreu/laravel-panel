@@ -4,6 +4,4 @@ namespace Mintreu\LaravelPanel;
 
 class LaravelPanel
 {
-
-
 }
