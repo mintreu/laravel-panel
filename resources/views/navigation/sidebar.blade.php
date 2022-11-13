@@ -39,8 +39,12 @@
 {{--                            <span class="flex-1">{{$links['name']}}</span>--}}
 {{--                        </a>--}}
 
-
+{{--Sidebar Event--}}
                         <button wire:click="loadWindow('{{$links['record']}}')">{{$links['name']}}</button>
+
+{{--                        Record Event Direct --}}
+
+{{--                        <button wire:click="$emitTo('panel::list-record', 'reloadRecord('')')">{{$links['name']}}</button>--}}
 
 
                     @endforeach

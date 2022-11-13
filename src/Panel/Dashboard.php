@@ -40,7 +40,7 @@ class Dashboard extends Component implements PanelContract
         }
 
         $this->emitTo( 'panel::record-container','reloadContainer',$this->recordResource);
-        $this->emitSelf('reload',$this->recordResource);
+       // $this->emitSelf('reload',$this->recordResource);
     }
 
 

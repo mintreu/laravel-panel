@@ -32,7 +32,8 @@ class Sidebar extends Component
     public function loadWindow($param)
     {
 
-        $this->emitUp('refreshDashboard',$param);
+//        $this->emitUp('refreshDashboard',$param);
+        $this->emitto('panel::list-record','reloadRecord',$param);
     }
 
 

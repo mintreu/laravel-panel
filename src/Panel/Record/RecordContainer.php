@@ -28,7 +28,7 @@ class RecordContainer extends Component
         $this->record = $record;
         //  $this->emitto('panel::record','refreshRecord',$this->record);
         $this->emitto('panel::list-record','reloadRecord',$this->record);
-       $this->emitSelf('refresh',$this->record);
+      // $this->emitSelf('refresh',$this->record);
 
 //        $this->emitto('panel::create-record','refreshComponent');
 //        $this->emitto('panel::edit-record','refreshComponent');

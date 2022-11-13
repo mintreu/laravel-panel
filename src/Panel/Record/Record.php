@@ -22,7 +22,7 @@ abstract class Record extends Component
     public function setRecord($record)
     {
         $this->record = $record;
-        $this->emitSelf('refresh',$this->record);
+       // $this->emitSelf('refresh',$this->record);
     }
 
 
